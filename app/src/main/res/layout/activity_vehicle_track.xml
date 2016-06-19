@@ -4,26 +4,26 @@
     xmlns:opencv="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ui.activity.VehicleTrackActivity">
+
+    <org.opencv.android.JavaCameraView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:id="@+id/vehicle_track_jcvCamera"
+        android:textSize="40dp"
+        opencv:show_fps="true"
+        opencv:camera_id="any"/>
 
     <Button
         android:id="@+id/vehicle_track_bMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/colorAccent"
+        android:layout_margin="20dp"
+        android:textSize="20dp"
         android:textAllCaps="false"
         android:text="@string/vehicle_track_bClose"
-        android:background="@color/colorGray" />
-        
-    <org.opencv.android.JavaCameraView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:visibility="gone"
-        android:id="@+id/vehicle_track_jcvCamera"
-        android:textSize="40dp"
-        android:layout_below="@id/vehicle_track_bMain"
-        opencv:show_fps="true"
-        opencv:camera_id="any"/>
+        android:background="@drawable/buttonshape"/>
 
 </RelativeLayout>

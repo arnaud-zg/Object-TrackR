@@ -13,6 +13,7 @@
         android:id="@+id/main_tvDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="5dp"
         android:text="@string/main_tvDescription" />
 
     <Button
@@ -22,5 +23,13 @@
         android:layout_height="wrap_content"
         android:text="@string/main_bVehicleTrack"
         android:layout_below="@+id/main_tvDescription"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_tvCredit"
+        android:text="@string/main_tvCredit"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>

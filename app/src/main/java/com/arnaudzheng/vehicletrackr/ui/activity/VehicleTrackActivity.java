@@ -49,40 +49,21 @@ public class VehicleTrackActivity extends Activity implements CameraBridgeViewBa
     ** OpenCV
      */
     private static final Scalar     OBJECT_RECT_COLOR       = new Scalar(0, 255, 0, 255);
-    // public static final int         JAVA_DETECTOR           = 0;
-    // public static final int         NATIVE_DETECTOR         = 1;
-
-    // private MenuItem                mobject;
-    // private MenuItem                mfork;
-    // private MenuItem                mItemType;
-    // private MenuItem                mMyCascade;
-
-    // private Mat                     mRgbaF                  = null;
-    // private Mat                     mRgbaT                  = null;
 
     private Mat                     mRgba                   = null;
     private Mat                     mGray                   = null;
     private File                    mCascadeFile            = null;
     private CascadeClassifier       mJavaDetector           = null;
-    private DetectionBasedTracker   mNativeDetector         = null;
-
-
-    // private int                     mDetectorType           = JAVA_DETECTOR;
-    private String[]                mDetectorName           = null;
 
     boolean                         objectIsLoaded          = false;
     boolean                         forkIsLoaded            = false;
     boolean                         firstForkLoaded         = false;
     boolean                         myCascadeIsLoaded       = false;
 
-    // private float                  mRelativeFaceSize   = 0.2f;
-    // private int                    mAbsoluteFaceSize   = 0;
-
     private InputStream             is                      = null;
 
     private CameraBridgeViewBase    mOpenCvCameraView       = null;
     private String                  currentCascade          = "vehicle.xml";
-    // private String                  path                    = "";
 
     static {
         if(!OpenCVLoader.initDebug()){
@@ -154,7 +135,6 @@ public class VehicleTrackActivity extends Activity implements CameraBridgeViewBa
     public void onResume()
     {
         super.onResume();
-        // OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_1_0, this, mLoaderCallback);
         if (!OpenCVLoader.initDebug()) {
             Log.d(TAG, "Internal OpenCV library not found. Using OpenCV Manager for initialization");
             OpenCVLoader.initAsync(OpenCVLoader.OPENCV_VERSION_3_1_0, this, mLoaderCallback);
@@ -169,21 +149,13 @@ public class VehicleTrackActivity extends Activity implements CameraBridgeViewBa
     public String getCurrentCascade(){ return currentCascade; }
 
     public VehicleTrackActivity() {
-        /*
-        mDetectorName = new String[2];
-        mDetectorName[JAVA_DETECTOR] = "Java";
-        mDetectorName[NATIVE_DETECTOR] = "Native (tracking)";
-        */
         Log.i(TAG, "Instantiated new " + this.getClass());
     }
 
     @Override
     public void onCameraViewStarted(int width, int height) {
         mGray = new Mat();
-        // mRgba = new Mat();
         mRgba = new Mat(height, width, CvType.CV_8UC4);
-        // mRgbaF = new Mat(height, width, CvType.CV_8UC4);
-        // mRgbaT = new Mat(width, width, CvType.CV_8UC4);
     }
 
     @Override
@@ -237,7 +209,6 @@ public class VehicleTrackActivity extends Activity implements CameraBridgeViewBa
             e.printStackTrace();
             Log.e(TAG, "Failed to load cascade. Exception thrown: " + e);
         }
-
         // Java detector multi scale
         if (mJavaDetector != null)
             mJavaDetector.detectMultiScale(mGray, objectDetect, 1.75, 2, 0, new Size(50, 50), new Size(500, 500));
