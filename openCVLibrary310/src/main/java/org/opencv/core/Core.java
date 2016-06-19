@@ -2159,7 +2159,6 @@ public class Core {
         return;
     }
 
-
     // manual port
     public static class MinMaxLocResult {
         public double minVal;
