@@ -1,4 +1,4 @@
-package com.arnaudzheng.vehicletrackr;
+package com.arnaudzheng.object_trackr;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

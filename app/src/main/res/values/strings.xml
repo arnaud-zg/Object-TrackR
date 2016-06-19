@@ -1,7 +1,9 @@
 <resources>
-    <string name="app_name">Vehicle TrackR</string>
+    <string name="app_name">Object TrackR</string>
     <string name="vehicle_track_bClose">Close</string>
-    <string name="main_bVehicleTrack">Vehicle tracking</string>
+    <string name="main_bVehicleTrack">Vehicle</string>
+    <string name="maintvTracking">Tracking</string>
+    <string name="main_bBananaTrack">Banana</string>
     <string name="main_tvDescription">Hello, this application is an experimentation mobile application for car detection, you have to use it on landscape mode.</string>
     <string name="main_tvCredit">Made for image processing course\nat Tongji University.</string>
 </resources>

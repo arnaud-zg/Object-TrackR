@@ -1,4 +1,4 @@
-package com.arnaudzheng.vehicletrackr;
+package com.arnaudzheng.object_trackr;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.arnaudzheng.vehicletrackr.ui.activity;
+package com.arnaudzheng.object_trackr.ui.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,8 +13,8 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
-import com.arnaudzheng.vehicletrackr.R;
-import com.arnaudzheng.vehicletrackr.utils.DetectionBasedTracker;
+import com.arnaudzheng.object_trackr.R;
+import com.arnaudzheng.object_trackr.utils.DetectionBasedTracker;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
@@ -48,7 +48,7 @@ public class VehicleTrackActivity extends Activity implements CameraBridgeViewBa
     /*
     ** OpenCV
      */
-    private static final Scalar     OBJECT_RECT_COLOR       = new Scalar(0, 255, 0, 255);
+    private static final Scalar     OBJECT_RECT_COLOR       = new Scalar(0, 239, 83, 80);
 
     private Mat                     mRgba                   = null;
     private Mat                     mGray                   = null;

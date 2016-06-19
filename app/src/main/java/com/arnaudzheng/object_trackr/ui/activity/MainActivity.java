@@ -1,4 +1,4 @@
-package com.arnaudzheng.vehicletrackr.ui.activity;
+package com.arnaudzheng.object_trackr.ui.activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,7 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.arnaudzheng.vehicletrackr.R;
+import com.arnaudzheng.object_trackr.R;
 
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;

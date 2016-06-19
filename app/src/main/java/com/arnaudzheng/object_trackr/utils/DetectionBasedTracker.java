@@ -1,4 +1,4 @@
-package com.arnaudzheng.vehicletrackr.utils;
+package com.arnaudzheng.object_trackr.utils;
 
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfRect;
