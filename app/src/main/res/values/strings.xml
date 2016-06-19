@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Vehicle TrackR</string>
-    <string name="vehicle_track_bClose">Close</string>
+    <string name="vehicle_track_bClose">Close and go back</string>
     <string name="main_bVehicleTrack">Tracking vehicle with camera (experimentation)</string>
     <string name="main_tvDescription">Hello World!</string>
-
 </resources>

@@ -3,6 +3,7 @@ package com.arnaudzheng.vehicletrackr.ui.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.hardware.Camera;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,6 +22,7 @@ import org.opencv.android.JavaCameraView;
 import org.opencv.android.LoaderCallbackInterface;
 import org.opencv.android.OpenCVLoader;
 import org.opencv.core.Core;
+import org.opencv.core.CvType;
 import org.opencv.core.Mat;
 import org.opencv.core.MatOfRect;
 import org.opencv.core.Rect;
@@ -47,13 +49,16 @@ public class VehicleTrackActivity extends Activity implements CameraBridgeViewBa
     ** OpenCV
      */
     private static final Scalar     OBJECT_RECT_COLOR       = new Scalar(0, 255, 0, 255);
-    public static final int         JAVA_DETECTOR           = 0;
-    public static final int         NATIVE_DETECTOR         = 1;
+    // public static final int         JAVA_DETECTOR           = 0;
+    // public static final int         NATIVE_DETECTOR         = 1;
 
     // private MenuItem                mobject;
     // private MenuItem                mfork;
     // private MenuItem                mItemType;
     // private MenuItem                mMyCascade;
+
+    // private Mat                     mRgbaF                  = null;
+    // private Mat                     mRgbaT                  = null;
 
     private Mat                     mRgba                   = null;
     private Mat                     mGray                   = null;
@@ -62,7 +67,7 @@ public class VehicleTrackActivity extends Activity implements CameraBridgeViewBa
     private DetectionBasedTracker   mNativeDetector         = null;
 
 
-    private int                     mDetectorType           = JAVA_DETECTOR;
+    // private int                     mDetectorType           = JAVA_DETECTOR;
     private String[]                mDetectorName           = null;
 
     boolean                         objectIsLoaded          = false;
@@ -116,7 +121,6 @@ public class VehicleTrackActivity extends Activity implements CameraBridgeViewBa
                 startNewActivity(MainActivity.class);
             }
         });
-
         mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.vehicle_track_jcvCamera);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
         mOpenCvCameraView.setCvCameraViewListener(this);
@@ -165,16 +169,21 @@ public class VehicleTrackActivity extends Activity implements CameraBridgeViewBa
     public String getCurrentCascade(){ return currentCascade; }
 
     public VehicleTrackActivity() {
+        /*
         mDetectorName = new String[2];
         mDetectorName[JAVA_DETECTOR] = "Java";
         mDetectorName[NATIVE_DETECTOR] = "Native (tracking)";
+        */
         Log.i(TAG, "Instantiated new " + this.getClass());
     }
 
     @Override
     public void onCameraViewStarted(int width, int height) {
         mGray = new Mat();
-        mRgba = new Mat();
+        // mRgba = new Mat();
+        mRgba = new Mat(height, width, CvType.CV_8UC4);
+        // mRgbaF = new Mat(height, width, CvType.CV_8UC4);
+        // mRgbaT = new Mat(width, width, CvType.CV_8UC4);
     }
 
     @Override
@@ -229,19 +238,9 @@ public class VehicleTrackActivity extends Activity implements CameraBridgeViewBa
             Log.e(TAG, "Failed to load cascade. Exception thrown: " + e);
         }
 
-
-        if (mDetectorType == JAVA_DETECTOR) {
-            if (mJavaDetector != null)
-                mJavaDetector.detectMultiScale(mGray, objectDetect, 1.1, 2, 2, // TODO: objdetect.CV_HAAR_SCALE_IMAGE
-                        new Size(50, 50), new Size(600,600));
-        }
-        else if (mDetectorType == NATIVE_DETECTOR) {
-            if (mNativeDetector != null)
-                mNativeDetector.detect(mGray, objectDetect);
-        }
-        else {
-            Log.e(TAG, "Detection method is not selected!");
-        }
+        // Java detector multi scale
+        if (mJavaDetector != null)
+            mJavaDetector.detectMultiScale(mGray, objectDetect, 1.75, 2, 0, new Size(50, 50), new Size(500, 500));
 
         Rect[] objectArray = objectDetect.toArray();
         for (int i = 0; i < objectArray.length; i++)

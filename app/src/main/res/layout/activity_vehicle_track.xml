@@ -10,14 +10,19 @@
     <Button
         android:id="@+id/vehicle_track_bMain"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:text="@string/vehicle_track_bClose" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:textAllCaps="false"
+        android:text="@string/vehicle_track_bClose"
+        android:background="@color/colorGray" />
         
     <org.opencv.android.JavaCameraView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:visibility="gone"
         android:id="@+id/vehicle_track_jcvCamera"
+        android:textSize="40dp"
+        android:layout_below="@id/vehicle_track_bMain"
         opencv:show_fps="true"
         opencv:camera_id="any"/>
 
