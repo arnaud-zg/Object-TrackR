@@ -7,7 +7,10 @@ import org.opencv.core.MatOfRect;
  * Created by Xiang on 19/06/2016.
  */
 public class DetectionBasedTracker {
-    String currentCascade;
+
+    private String currentCascade = null;
+    private long mNativeObj = 0;
+
     public DetectionBasedTracker(String cascadeName, int minFaceSize) {
         mNativeObj = nativeCreateObject(cascadeName, minFaceSize);
     }
@@ -33,12 +36,11 @@ public class DetectionBasedTracker {
         mNativeObj = 0;
     }
 
-    private long mNativeObj = 0;
-
     private static native long nativeCreateObject(String cascadeName, int minFaceSize);
     private static native void nativeDestroyObject(long thiz);
     private static native void nativeStart(long thiz);
     private static native void nativeStop(long thiz);
     private static native void nativeSetFaceSize(long thiz, int size);
     private static native void nativeDetect(long thiz, long inputImage, long faces);
+
 }

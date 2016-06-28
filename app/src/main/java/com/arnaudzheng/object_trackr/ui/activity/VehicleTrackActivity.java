@@ -48,7 +48,7 @@ public class VehicleTrackActivity extends Activity implements CameraBridgeViewBa
     /*
     ** OpenCV
      */
-    private static final Scalar     OBJECT_RECT_COLOR       = new Scalar(0, 239, 83, 80);
+    private static final Scalar     OBJECT_RECT_COLOR       = new Scalar(80, 83, 239);
 
     private Mat                     mRgba                   = null;
     private Mat                     mGray                   = null;
@@ -105,6 +105,7 @@ public class VehicleTrackActivity extends Activity implements CameraBridgeViewBa
         mOpenCvCameraView = (CameraBridgeViewBase) findViewById(R.id.vehicle_track_jcvCamera);
         mOpenCvCameraView.setVisibility(SurfaceView.VISIBLE);
         mOpenCvCameraView.setCvCameraViewListener(this);
+        mOpenCvCameraView.setMaxFrameSize(1280, 720);
     }
 
     public void startNewActivity(Class activity) {
@@ -154,7 +155,7 @@ public class VehicleTrackActivity extends Activity implements CameraBridgeViewBa
 
     @Override
     public void onCameraViewStarted(int width, int height) {
-        mGray = new Mat();
+        mGray = new Mat(height, width, CvType.CV_8UC4);
         mRgba = new Mat(height, width, CvType.CV_8UC4);
     }
 
@@ -209,10 +210,8 @@ public class VehicleTrackActivity extends Activity implements CameraBridgeViewBa
             e.printStackTrace();
             Log.e(TAG, "Failed to load cascade. Exception thrown: " + e);
         }
-        // Java detector multi scale
         if (mJavaDetector != null)
-            mJavaDetector.detectMultiScale(mGray, objectDetect, 1.75, 2, 0, new Size(50, 50), new Size(500, 500));
-
+            mJavaDetector.detectMultiScale(mGray, objectDetect, 1.1, 4, 4, new Size(50, 50), new Size(600, 600));
         Rect[] objectArray = objectDetect.toArray();
         for (int i = 0; i < objectArray.length; i++)
             Imgproc.rectangle(mRgba, objectArray[i].tl(), objectArray[i].br(), OBJECT_RECT_COLOR, 3);

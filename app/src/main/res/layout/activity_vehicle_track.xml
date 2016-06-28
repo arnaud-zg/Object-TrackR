@@ -13,7 +13,7 @@
         android:id="@+id/vehicle_track_jcvCamera"
         android:textSize="40dp"
         opencv:show_fps="true"
-        opencv:camera_id="any"/>
+        opencv:camera_id="any" />
 
     <Button
         android:id="@+id/vehicle_track_bMain"
