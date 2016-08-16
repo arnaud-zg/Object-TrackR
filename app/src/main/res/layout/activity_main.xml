@@ -9,12 +9,20 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".ui.activity.MainActivity">
 
+    <ImageView
+        android:id="@+id/main_ivLogo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/ic_launcher" />
+
     <TextView
         android:id="@+id/main_tvDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:text="@string/main_tvDescription" />
+        android:text="@string/main_tvDescription"
+        android:layout_below="@+id/main_ivLogo" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -33,17 +41,6 @@
         android:layout_below="@+id/main_tvTracking"
         android:padding="5dp"
         android:layout_margin="5dp" />
-
-    <Button
-        android:id="@+id/main_bBananaTrack"
-        android:enabled="false"
-        android:textAllCaps="false"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/main_bBananaTrack"
-        android:layout_below="@+id/main_bVehicleTrack"
-        android:padding="5dp"
-        android:layout_margin="5dp"/>
 
     <TextView
         android:layout_width="wrap_content"

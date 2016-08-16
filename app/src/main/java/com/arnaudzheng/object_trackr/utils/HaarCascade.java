@@ -6,7 +6,6 @@ package com.arnaudzheng.object_trackr.utils;
 public class HaarCascade {
 
     public HaarCascade() {
-
     }
 
 }

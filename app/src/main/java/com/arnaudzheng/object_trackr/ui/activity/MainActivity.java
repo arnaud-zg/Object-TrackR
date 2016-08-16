@@ -3,16 +3,10 @@ package com.arnaudzheng.object_trackr.ui.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import com.arnaudzheng.object_trackr.R;
-
-import org.opencv.android.BaseLoaderCallback;
-import org.opencv.android.CameraBridgeViewBase;
-import org.opencv.android.LoaderCallbackInterface;
-import org.opencv.android.OpenCVLoader;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -34,14 +28,12 @@ public class MainActivity extends AppCompatActivity {
                 startNewActivity(VehicleTrackActivity.class);
             }
         });
-
     }
 
     public void startNewActivity(Class activity) {
         Intent intent = new Intent(this, activity);
         startActivity(intent);
         finish();
-
     }
 
     @Override
@@ -58,6 +50,5 @@ public class MainActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
     }
-
 
 }
